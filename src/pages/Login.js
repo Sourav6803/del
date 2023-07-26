@@ -15,7 +15,7 @@ const loginSchema = yup.object().shape({
 });
 
 const Login = () => {
-    const authState = useSelector(state=>state.auth)
+    const authState = useSelector(state=>state.auth.logedUser?.status)
     console.log(authState)
     
     const dispatch = useDispatch()
@@ -29,9 +29,15 @@ const Login = () => {
         validationSchema: loginSchema,
         onSubmit: values => {
             dispatch(loginUser(values))
-            if(authState.isSuccess === true){
-                navigate('/my-profile')
-            }
+            // if(authState !== undefined && authState == true ){
+            //     navigate('/my-profile')
+            // }
+            // if(authState == undefined ){
+            //     navigate("/")
+            // }
+
+
+            navigate("/my-profile")
         },  
     });
 

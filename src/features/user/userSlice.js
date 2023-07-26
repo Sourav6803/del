@@ -79,9 +79,9 @@ export const authSlice = createSlice({
                 state.isError = true;
                 state.isSuccess = false;
                 state.message = action.error;
-                // if (state.isError === true) {
-                //     toast.info(action.payload.responce.data.message)
-                // }
+                if (state.isError === true) {
+                    toast.error(action.payload.responce.data.message)
+                }
             })
 
             .addCase(loginUser.pending, (state) => {
@@ -103,7 +103,7 @@ export const authSlice = createSlice({
                 state.isSuccess = false;
                 state.message = action.error;
                 if (state.isSuccess === false) {
-                    toast.info(action.payload.message)
+                    toast.error(action.payload.responce.message)
                 }
             })
 
@@ -124,7 +124,7 @@ export const authSlice = createSlice({
                 state.isError = true;
                 state.isSuccess = false;
                 state.message = action.error;
-                
+
                 if(state.isError){
                     toast.error("Something went wrong")
                 }
