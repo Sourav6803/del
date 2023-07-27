@@ -4,11 +4,15 @@ import { base_url, config } from '../../utils/axiosConfig';
 
 
 const register = async(userData)=>{
-    const responce = await axios.post("http://localhost:9000/register", userData);
+    const responce = await axios.post("http://localhost:9000/register", userData ,{ headers: {
+        'Content-Type': 'multipart/form-data',
+      },});
     if(responce.data){
         return responce.data
     }
 }
+
+
 
 const login = async(userData)=>{
     const responce = await axios.post("http://localhost:9000/login", userData);

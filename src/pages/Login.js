@@ -5,6 +5,7 @@ import Container from '../components/Container';
 import Meta from '../components/Meta';
 import CustomInput from '../components/CustomInput';
 import { useFormik } from 'formik';
+import "./login.css"
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../features/user/userSlice';
@@ -32,22 +33,21 @@ const Login = () => {
             // if(authState !== undefined && authState == true ){
             //     navigate('/my-profile')
             // }
-            // if(authState == undefined ){
-            //     navigate("/")
-            // }
+            
 
 
-            navigate("/my-profile")
+            // navigate("/my-profile")
         },  
+        
     });
 
-    // useEffect(()=>{
-    //     if( authState.isError === false){
-    //         setTimeout(()=>{
-    //             navigate('/my-profile')
-    //         },1000)
-    //     }
-    // },[authState])
+    useEffect(()=>{
+        if( authState){
+            setTimeout(()=>{
+                navigate('/my-profile')
+            },1000)
+        }
+    },[authState])
 
     
 
@@ -57,12 +57,16 @@ const Login = () => {
         <>
             <Meta title={"Login"} />
             <BreadCrumbs title='Login' />
+             
+            
             <Container class1='login-wrapper py-5 home-wrapper-2'>
                 <div className='row'>
                     <div className='col-12'>
                         <div className='auth-card' style={{ border: "1px solid grey" }}>
                             <h3 className='text-center mb-3'>Login</h3>
                             <form action='' onSubmit={formik.handleSubmit} className='d-flex flex-column gap-15'>
+
+                            
                                 <CustomInput
                                     type="email"
                                     name='email'

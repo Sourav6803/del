@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import BreadCrumbs from '../components/BreadCrumbs';
 import Container from '../components/Container';
 import Meta from '../components/Meta';
@@ -8,6 +8,8 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'
 
 const signupSchema = yup.object().shape({
     firstName: yup.string().required("First Nmae is required"),
@@ -22,12 +24,16 @@ const signupSchema = yup.object().shape({
 
 
 const Singnup = () => {
+    const [gender, setGender] = useState('')
+    const [profileImage, setImage] = useState()
+   
+    console.log(profileImage)
 
-    const authState = useSelector((state=>state?.auth))
+    const authState = useSelector((state => state?.auth))
 
     const dispatch = useDispatch()
-    
-    const navigate = useNavigate() 
+
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -37,17 +43,19 @@ const Singnup = () => {
             mobile: '',
             password: '',
             gender: '',
-            address: ''
+            address: '',
+            // profileImage: ''
 
         },
         validationSchema: signupSchema,
         onSubmit: values => {
-            dispatch(registerUser(values))
-            
+            console.log(profileImage)
+            dispatch(registerUser({...values, profileImage}))
+
         },
     });
 
-    
+
 
     return (
         <>
@@ -59,6 +67,41 @@ const Singnup = () => {
                         <div className='auth-card' style={{ border: "1px solid grey" }}>
                             <h3 className='text-center mb-3'>Singup</h3>
                             <form action='' onSubmit={formik.handleSubmit} className='d-flex flex-column gap-15'>
+
+                                {/* <CustomInput
+                                    classname="profileImage"
+                                    type="file"
+                                    name='profileImage'
+                                    placeholder='Profile image'
+                                    value={formik.values.profileImage}
+                                    onChange={formik.handleChange("profileImage")}
+                                    onBlur={formik.handleBlur("profileImage")}
+                                />
+                                <div className='error'>
+                                    {formik.touched.profileImage && formik.errors.profileImage}
+                                </div> */}
+
+                                {/* <input 
+                                    type='file'
+                                    accept='/image/*'
+                                    onChange={e=>{
+                                         const file = e.target.files[0]
+                                        if(file && file.type.substring(0,5)==="iamge"){
+                                            setImage(file)
+                                        }else{
+                                            setImage(null)
+                                        }
+                                    }}
+                                /> */}
+
+                                <input 
+                                    type='file'
+                                    onChange={e=>{
+                                        setImage(e.target.files[0])
+                                    }}
+                                />
+
+
                                 <CustomInput
                                     type="text"
                                     name='firstName'
@@ -92,9 +135,10 @@ const Singnup = () => {
                                 <div className='error'>
                                     {formik.touched.email && formik.errors.email}
                                 </div>
-                                <CustomInput
+                                <PhoneInput
                                     type="tel"
                                     name='mobile'
+                                    country={'in'}
                                     placeholder='Mobile No'
                                     value={formik.values.mobile}
                                     onChange={formik.handleChange("mobile")}
@@ -116,20 +160,41 @@ const Singnup = () => {
                                     {formik.touched.password && formik.errors.password}
                                 </div>
 
-                                <CustomInput
-                                    type="text"
+                                {/* <CustomInput
+                                    type= "text"
                                     name='gender'
                                     placeholder='Male/Female/Other'
                                     value={formik.values.gender}
                                     onChange={formik.handleChange("gender")}
                                     onBlur={formik.handleBlur("gender")}
-                                />
+                                >
+                                    
+                                </CustomInput> */}
+
+
+
+                                {/* <div>
+                                    <label>
+                                        <p>Select gender</p>
+                                        <input type='radio' id='Male' name='gender' value="Male">
+                                            <label htmlFor='Male' > Male</label>
+                                        </input>
+                                    </label>
+                                </div>
+
                                 <div className='error'>
                                     {formik.touched.gender && formik.errors.gender}
+                                </div> */}
+
+                                <div>
+                                    <p>Select Gender:</p>
+                                    <input className='m-2' type="radio" id='1' value="Male" name="gender" onChange={formik.handleChange("gender")} onBlur={formik.handleBlur("gender")} />Male
+                                    <input className='m-2' type="radio" id='2' value="Female" name="gender" onChange={formik.handleChange("gender")} onBlur={formik.handleBlur("Female")} /> Female
+                                    <input className='m-2' type="radio" id='3' value="Other" name="gender" onChange={formik.handleChange("gender")} onBlur={formik.handleBlur("Other")} /> Other
                                 </div>
 
                                 <CustomInput
-                                    type="text"
+                                    type="Date"
                                     name='DOB'
                                     placeholder='DOB'
                                     value={formik.values.DOB}
@@ -154,7 +219,7 @@ const Singnup = () => {
 
 
                                 <div className='d-flex justify-content-center gap-15 align-item-center'>
-                                    <button className='button border-0'>Create Account</button>
+                                    <button className='button border-0' type='submit'>Create Account</button>
                                 </div>
                             </form>
                         </div>
