@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from "./components/Layout";
 import About from "./pages/About";
@@ -16,7 +16,9 @@ import Profile from "./pages/Profile";
 
 
 
+
 function App() {
+  const [results, setResults] = useState([]);
   return (
     <>
       <BrowserRouter>
@@ -37,6 +39,8 @@ function App() {
         </Routes>
       </BrowserRouter>
     </>
+
+    
   );
 }
 

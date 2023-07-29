@@ -9,10 +9,12 @@ import "./login.css"
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../features/user/userSlice';
+import {AiOutlineMail} from 'react-icons/ai'
+ import {RiLockPasswordFill} from 'react-icons/ri'
 
 const loginSchema = yup.object().shape({
-    email: yup.string().required("Email shouldbe valid").required("Email erquired"),
-    password: yup.string().required("Password is required"),
+    email: yup.string().required("Email shouldbe valid").required("Email is rquired*"),
+    password: yup.string().required("Password is required*"),
 });
 
 const Login = () => {
@@ -61,7 +63,7 @@ const Login = () => {
             
             <Container class1='login-wrapper py-5 home-wrapper-2'>
                 <div className='row'>
-                    <div className='col-12'>
+                    <div className='col-lg-12'>
                         <div className='auth-card' style={{ border: "1px solid grey" }}>
                             <h3 className='text-center mb-3'>Login</h3>
                             <form action='' onSubmit={formik.handleSubmit} className='d-flex flex-column gap-15'>
@@ -74,8 +76,8 @@ const Login = () => {
                                     onChange={formik.handleChange("email")}
                                     onBlur={formik.handleBlur("email")}
                                     value={formik.values.email}
-                                />
-                                <div className='error'>
+                                ><AiOutlineMail /></CustomInput>
+                                <div className='errors'>
                                     {formik.touched.email && formik.errors.email}
                                 </div>
                                 <CustomInput
@@ -86,7 +88,7 @@ const Login = () => {
                                     onBlur={formik.handleBlur("password")}
                                     value={formik.values.password}
                                 />
-                                <div className='error'>
+                                <div className='errors'>
                                     {formik.touched.password && formik.errors.password}
                                 </div>
                                 <Link to="/forgot-password" >Forgot your Password ?</Link>
