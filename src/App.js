@@ -13,6 +13,7 @@ import ResetPassword from "./pages/ResetPassword";
 import { PrivateRoutes } from "./routing/PrivateRoute";
 import { OpenRoutes } from "./routing/OpenRoutes";
 import Profile from "./pages/Profile";
+import UpdateProfile from "./pages/updateProfile";
 
 
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="forgot-password" element={<Forgotpassword />} />
             <Route path="signup" element={<OpenRoutes><Singnup /></OpenRoutes>} />
             <Route path="reset-password/:token" element={<ResetPassword />} />
+            <Route path="update-profile" element={<PrivateRoutes><UpdateProfile /></PrivateRoutes>}/>
 
 
 

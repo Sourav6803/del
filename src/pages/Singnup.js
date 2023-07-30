@@ -25,7 +25,7 @@ const signupSchema = yup.object().shape({
 
 
 const Singnup = () => {
-    const [gender, setGender] = useState('')
+
     const [profileImage, setImage] = useState()
     const inputRef = useRef(null)
 
@@ -53,7 +53,9 @@ const Singnup = () => {
         onSubmit: values => {
             console.log(profileImage)
             dispatch(registerUser({ ...values, profileImage }))
-
+            setTimeout(() => {
+                navigate("/")
+            }, 3000)
         },
     });
 
@@ -63,20 +65,17 @@ const Singnup = () => {
         <>
             <Meta title={"Sing Up"} />
             <BreadCrumbs title='Singup' />
-            <Container class1='login-wrapper py-5 home-wrapper-2'>
+            <Container class1='login-wrapper py-5 home-wrapper-2 bg-primary'>
                 <div className='row'>
                     <div className='col-12'>
                         <div className='auth-card' style={{ border: "1px solid grey" }}>
                             <h3 className='text-center mb-3'>Singup</h3>
                             <form action='' onSubmit={formik.handleSubmit} className='d-flex flex-column gap-15'>
-
-
-
                                 <div className='profile-img  d-flex flex-column align-items-center '>
 
-                                    <div className='m-3' style={{ height: "100px", width: "100px",   }}>
+                                    <div className='m-3' style={{ height: "100px", width: "100px", }}>
                                         {/* {profileImage && <img src={URL.createObjectURL(profileImage)} style={{height:"120px", width: "120px",borderRadius: "50%"}} className='object-fit-cover'/>} */}
-                                        {profileImage ? <img src={URL.createObjectURL(profileImage)} style={{height:"120px", width: "120px",borderRadius: "50%"}} className='object-fit-cover'/>  : <img src="https://w7.pngwing.com/pngs/529/832/png-transparent-computer-icons-avatar-user-profile-avatar.png" style={{height:"120px", width: "120px",borderRadius: "50%"}} className='object-fit-cover'/>}
+                                        {profileImage ? <img src={URL.createObjectURL(profileImage)} style={{ height: "120px", width: "120px", borderRadius: "50%" }} className='object-fit-cover' /> : <img src="https://w7.pngwing.com/pngs/529/832/png-transparent-computer-icons-avatar-user-profile-avatar.png" style={{ height: "120px", width: "120px", borderRadius: "50%" }} className='object-fit-cover' />}
                                     </div>
                                     <div className='d-flex align-items-center justify-content-center w-50 mb-3'>
 
@@ -118,7 +117,6 @@ const Singnup = () => {
                                 <CustomInput
                                     type="email"
                                     name='email'
-
                                     placeholder="Email*"
                                     value={formik.values.email}
                                     onChange={formik.handleChange("email")}

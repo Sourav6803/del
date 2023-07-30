@@ -174,7 +174,7 @@ footer .input-group-text {
   text-transform: none;
 }
 
-.main-banner-content p {
+.main-banner-content  {
   font-size: 10px;
   line-height: 28px;
   letter-spacing: 0.4;
@@ -195,49 +195,6 @@ footer .input-group-text {
   letter-spacing: 0.3px;
   text-transform: uppercase;
 }
-
-
-
-/* Home wrapper 2 starts*/
-.home-wrapper-2 {
-  background-color: var(--color-f5f5f8);
-}
-
-/* Home wrapper 2 ends here */
-
-
-/* categories section end */
-/* Home Pages end here */
-
-
-
-/* blog part start here */
-
-.blog-card {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-
-}
-
-
-
-/* Product card start  */
-
-
-
-
-
-
-/* Product card end */
-
-/*  Special product */
-
-
-
-
-
-
 
 .gr-12 {
   width: 100%;
@@ -281,52 +238,23 @@ footer .input-group-text {
   color: var(--color-777777);
 }
 
-.auth-card p {
+.auth-card  {
   font-size: 13px;
   color: var(--color-777777);
 }
 
-.auth-card .form-control {
+ .form-control {
   height: 50px;
   background-color: var(--color-f5f5f7);
   color: #777777;
   font-size: 14px;
-  border-radius: 10px;
+  border-radius: 20px;
   border-color: 1px solid rgb(76, 85, 57);
 }
 
-.auth-card a {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--color-777777);
-}
-
-.auth-card .signup:hover {
-  background-color: var(--color-febd69);
-  color: white;
-}
-
-/* auth card end here */
-
-/* Policy satrt */
 
 
 
-.review-head {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 20px;
-
-}
-
-.review-head h4 {
-  font-size: 18px;
-  color: var(--color-1c1c1b);
-}
-
-.review-head p ,.review-head a{
-  font-size: 14px;
-  color: var(--color-777777);
-}
 
 
 /* .profileImage{
@@ -342,6 +270,11 @@ footer .input-group-text {
 .react-tel-input{
   width: 460px;
   /* border: 1px solid black; */
+}
+
+input {
+  
+  border-radius: 20px;
 }
 
 
