@@ -49,7 +49,7 @@ const getCustomerFromLocalStorage = localStorage.getItem('customer')
 console.log(getCustomerFromLocalStorage)
 
 const initialState = {
-    user: JSON.parse(getCustomerFromLocalStorage) ? JSON.parse(getCustomerFromLocalStorage) : null,
+    user: JSON.parse(getCustomerFromLocalStorage) ,
     isError: false,
     isSuccess: false,
     isLoading: false,

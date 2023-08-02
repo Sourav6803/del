@@ -25,11 +25,12 @@ const login = async(userData)=>{
 }
 
 const forgotPassToken = async(data)=>{
-    const responce = await axios.post("http://localhost:5000/forget-password-token", data , config);
+    const responce = await axios.post("http://localhost:9000/user/forgot-password", data , config);
     if(responce.data){
         if (responce.data) {
             localStorage.setItem("customer", JSON.stringify(responce.data))
         }
+        console.log(responce.data)
         return responce.data
     }
 }
@@ -41,6 +42,14 @@ const updateAUser = async(data)=>{
     }
 }
 
+const resetPass = async(data)=>{
+    const responce = await axios.put(`http://localhost:9000/reset-password/${data.token}`, {password:data?.password} )
+    if(responce.data){
+        return responce.data
+    }
+}
+
+
 export const authService = {
-    register, login   , updateAUser,
+    register, login   , updateAUser , forgotPassToken, resetPass,
 }

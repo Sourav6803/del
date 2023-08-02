@@ -30,7 +30,7 @@ const ResetPassword = () => {
         validationSchema: passwordSchema,
         onSubmit: values => {
             dispatch(resetPassword({token:getToken , password:values?.password}))
-            // navigate('/login')  
+            navigate('/login')  
         },
     });
 

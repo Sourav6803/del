@@ -28,12 +28,12 @@ function App() {
             {/* <Route index element={<Home />} /> */}
             <Route index element={<Login />} />
             <Route path="about" element={<About />} />
-            <Route path="my-profile" element={<PrivateRoutes><Profile /></PrivateRoutes>} />
-            <Route path="Login" element={<OpenRoutes><Login /></OpenRoutes>} />
+            {/* <Route path="my-profile" element={<PrivateRoutes><Profile /></PrivateRoutes>} /> */}
+            <Route path="Login" element={<Login />} />
             <Route path="forgot-password" element={<Forgotpassword />} />
-            <Route path="signup" element={<OpenRoutes><Singnup /></OpenRoutes>} />
+            <Route path="signup" element={<Singnup />} />
             <Route path="reset-password/:token" element={<ResetPassword />} />
-            <Route path="update-profile" element={<PrivateRoutes><UpdateProfile /></PrivateRoutes>}/>
+            <Route path="update-profile" element={<UpdateProfile />}/>
 
 
 

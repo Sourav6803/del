@@ -34,15 +34,7 @@ const Login = () => {
         validationSchema: loginSchema,
         onSubmit: values => {
             dispatch(loginUser(values))
-            // if(authState !== undefined && authState == true ){
-            //     navigate('/my-profile')
-            // }
-
-
-
-            // navigate("/my-profile")
         },
-
     });
 
     useEffect(() => {
@@ -63,14 +55,14 @@ const Login = () => {
 
             <div className='row d-flex justify-content-center align-items-center w-100 vh-100 bg-primary'>
                 <div className='col-lg-12 d-flex justify-content-center align-items-center'>
-                    <div className=' p-5  bg-white ' style={{ border: "1px solid grey", width: "35vw", height: "88vh", borderRadius: "30px" }}>
+                    <div className=' p-5  bg-white ' style={{ border: "1px solid grey", width: "35vw", height: "95vh", borderRadius: "30px" }}>
                         <h3 className='text-center mb-3'>Get Started Now</h3>
                         <p className='text-center mb-3'>Enter your credential to access your account</p>
                         <form action='' onSubmit={formik.handleSubmit} className='d-flex flex-column gap-15'>
 
                             <div className='d-flex align-items-center justify-content-center '>
                                 <button className='me-2 rounded-3 p-1 border-1'><FcGoogle className='ms-2' /> Login With Google</button>
-                                <button className=' rounded-3 p-1 border-1'> <FaFacebookF className='me-1' />Login With Facebook</button>
+                                <button className=' rounded-3 p-1 border-1'> <FaFacebookF className='me-1 text-primary' />Login With Facebook</button>
                             </div>
                             <p className='text-center m-2'>Or</p>
                             <div className=' '>

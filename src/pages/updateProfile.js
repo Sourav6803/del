@@ -24,7 +24,7 @@ const UpdateProfile = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const userState = useSelector(state => state?.auth?.logedUser?.myUser)
+    const userState = useSelector(state => state?.auth?.user?.myUser)
     console.log(userState)
     const [edit, setEdit] = useState(true)
 
@@ -159,8 +159,6 @@ const UpdateProfile = () => {
                             }
                         </div>
                     </div>
-
-
                 </form>
             </div>
         </div>
