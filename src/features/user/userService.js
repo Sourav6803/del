@@ -4,7 +4,7 @@ import { base_url, config } from '../../utils/axiosConfig';
 
 
 const register = async(userData)=>{
-    const responce = await axios.post("http://localhost:9000/register", userData ,{ headers: {
+    const responce = await axios.post("https://0rjmcn91mi.execute-api.us-west-2.amazonaws.com/register", userData ,{ headers: {
         'Content-Type': 'multipart/form-data',
       },});
     if(responce.data){
@@ -15,7 +15,7 @@ const register = async(userData)=>{
 
 
 const login = async(userData)=>{
-    const responce = await axios.post("http://localhost:9000/login", userData);
+    const responce = await axios.post("https://0rjmcn91mi.execute-api.us-west-2.amazonaws.com/login", userData);
     if(responce.data){
         if (responce.data) {
             localStorage.setItem("customer", JSON.stringify(responce.data))
@@ -25,7 +25,7 @@ const login = async(userData)=>{
 }
 
 const forgotPassToken = async(data)=>{
-    const responce = await axios.post("http://localhost:9000/user/forgot-password", data , config);
+    const responce = await axios.post("https://0rjmcn91mi.execute-api.us-west-2.amazonaws.com/user/forgot-password", data , config);
     if(responce.data){
         if (responce.data) {
             localStorage.setItem("customer", JSON.stringify(responce.data))
@@ -36,14 +36,14 @@ const forgotPassToken = async(data)=>{
 }
 
 const updateAUser = async(data)=>{
-    const responce = await axios.put("http://localhost:9000/updateUser",data , config)
+    const responce = await axios.put("https://0rjmcn91mi.execute-api.us-west-2.amazonaws.com/updateUser",data , config)
     if(responce.data){
         return responce.data
     }
 }
 
 const resetPass = async(data)=>{
-    const responce = await axios.put(`http://localhost:9000/reset-password/${data.token}`, {password:data?.password} )
+    const responce = await axios.put(`https://0rjmcn91mi.execute-api.us-west-2.amazonaws.com/reset-password/${data.token}`, {password:data?.password} )
     if(responce.data){
         return responce.data
     }
